@@ -18,6 +18,26 @@
         <meta name="apple-mobile-web-app-title" content="Mine">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <link rel="apple-touch-icon" href="./images/512.png">
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator
+                    .serviceWorker
+                    .register('service-worker.js');
+            }
+            document
+                .querySelector('#show')
+                .addEventListener('click', () => {
+                    const iconUrl = document
+                        .querySelector('select')
+                        .selectedOptions[0]
+                        .value;
+                    let imgElement = document.createElement('img');
+                    imgElement.src = iconUrl;
+                    document
+                        .querySelector('#container')
+                        .appendChild(imgElement);
+                });
+        </script>
     </head>
     <body>
         <div id="preloader" class="preloader-light">
@@ -712,25 +732,5 @@
         <script type="text/javascript" src="scripts/jquery.js"></script>
         <script type="text/javascript" src="scripts/custom.js"></script>
         <script type="text/javascript" src="scripts/plugins.js"></script>
-        <script>
-            if ('serviceWorker' in navigator) {
-                navigator
-                    .serviceWorker
-                    .register('service-worker.js');
-            }
-            document
-                .querySelector('#show')
-                .addEventListener('click', () => {
-                    const iconUrl = document
-                        .querySelector('select')
-                        .selectedOptions[0]
-                        .value;
-                    let imgElement = document.createElement('img');
-                    imgElement.src = iconUrl;
-                    document
-                        .querySelector('#container')
-                        .appendChild(imgElement);
-                });
-        </script>
     </body>
 </html>
